@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title></title>
+  <title>BioChem Calculator</title>
   <meta charset="utf-8">
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="BioChem Calculator">
+  <meta name="author" content="A.Bailey - 22nd October 2015">
   <meta name="generator" content="slidify" />
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
@@ -31,10 +31,13 @@
     
     <!-- LOGO SLIDE -->
         <slide class="title-slide segue nobackground">
+  <aside class="gdbar">
+    <img src="assets/img/UoS_Logo.svg">
+  </aside>
   <hgroup class="auto-fadein">
-    <h1></h1>
-    <h2></h2>
-    <p><br/></p>
+    <h1>BioChem Calculator</h1>
+    <h2>Course project for Coursera Developing Data Projects</h2>
+    <p>A.Bailey - 22nd October 2015<br/></p>
   </hgroup>
   <article></article>  
 </slide>
@@ -42,26 +45,138 @@
 
     <!-- SLIDES -->
     <slide class="" id="slide-1" style="background:;">
-  <hgroup>
-    <h2>Read-And-Delete</h2>
-  </hgroup>
   <article data-timings="">
-    <ol>
-<li>Edit YAML front matter</li>
-<li>Write using R Markdown</li>
-<li>Use an empty line followed by three dashes to separate slides!</li>
+    <!-- Limit image width and height -->
+
+<style type='text/css'>
+img {
+    max-height: 625px;
+    max-width: 964px;
+}
+</style>
+
+<!-- Center image on slide 
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+<script type='text/javascript'>
+$(function() {
+    $("p:has(img)").addClass('centered');
+});
+</script> -->
+
+<!-- Center bold font -->
+
+<style>
+strong {
+  font-weight: bold;
+}
+</style>
+
+<!-- Center italic font -->
+
+<style>
+em {
+  font-style: italic
+}
+</style>
+
+<h2>A simple calculator for use in the Biochemistry Lab</h2>
+
+<p><br>
+Two everyday problems I and my colleagues encounter in the labroratory are:</p>
+
+<ol>
+<li>How much of <strong><em>X</em></strong> do I need to weigh out to make a solution of concentration <strong><em>Y</em></strong> ?</li>
+<li>How much of solution <strong><em>A</em></strong> do I need to dilute to make a soluton of concentration <strong><em>B</em></strong> ?</li>
 </ol>
+
+<p>This is straightforward, but often requires converting units between different
+scales.
+<br>
+<br>
+So I have created a simple Shiny app to do these two calculations and convert the units, 
+making things quicker and easier than pen and paper.</p>
 
   </article>
   <!-- Presenter Notes -->
 </slide>
 
 <slide class="class" id="id" style="background:;">
+  <article data-timings="">
+    <p><strong>For example</strong> if I have a stock solution of <a href = "https://en.wikipedia.org/wiki/Ethylenediaminetetraacetic_acid", target="_blank">EDTA</a> at M1 = 0.5 Molar.
+<br>
+To make a volume V2 = 100 mL of EDTA at a concentration of M2 = 10 mM from the stock solution I need the concentration and volumes in the same units
+to do the calculation, like so:</p>
+
+<pre><code class="r"># Input conc. and vols in Molar and Litres
+M1 &lt;- 0.5; M2 &lt;- 10e-3; V2 &lt;- 100e-3;
+# Calcluate vol of stock needed in Litres
+V1 &lt;- (V2*M2)/M1; paste(&quot;vol. of stock needed&quot;, V1, &quot;Litres&quot;);
+</code></pre>
+
+<pre><code>## [1] &quot;vol. of stock needed 0.002 Litres&quot;
+</code></pre>
+
+<pre><code class="r"># Convert back to millilitres
+paste(&quot;vol. of stock needed&quot;, V1*1e3, &quot;mL&quot;)
+</code></pre>
+
+<pre><code>## [1] &quot;vol. of stock needed 2 mL&quot;
+</code></pre>
+
+<p>My Shiny app allows the user to choose the input and output units and do the 
+conversion on the fly.</p>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-3" style="background:;">
   <hgroup>
-    <h2>Slide 2</h2>
+    <h2>Mass Molarity Calculator</h2>
   </hgroup>
   <article data-timings="">
     
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/img/mass_calc.png" width=400,height=400/></p>
+
+<p>\[Formula\,weight\,(g/mol) \times Desired\,vol.\,(L) \times Desired\,conc.\,(M) = Mass\,req.\,(g)\]</p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>This calculator calculates the dry mass of a substance in grams required to make up a solution to the desired volume and
+<a href="https://en.wikipedia.org/wiki/Molar_concentration", target="_blank">molar concentration</a>.
+<p>
+The user selects the desired volume and molar concentration unit using the drop down tabs. They then enter the volume of solution, the concentration and the formula weight of the substance to be dissolved into the boxes. 
+<p>
+The mass required in grams is then calculated as:</p>
+
+</div>
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="" id="slide-4" style="background:;">
+  <hgroup>
+    <h2>Solution Dilution Calculator</h2>
+  </hgroup>
+  <article data-timings="">
+    
+<div style='float:left;width:48%;' class='centered'>
+  <p><img src="assets/img/sol_calc.png" width=350,height=350/></p>
+
+</div>
+<div style='float:right;width:48%;'>
+  <p>This calculates the volume of stock concentrate required to achieve a specified volume and 
+<a href="https://en.wikipedia.org/wiki/Molar_concentration", target="_blank">molar concentration</a>.
+<p>
+The user selects the stock solution concentraion units, the
+desired concentration and volume units using the drop down tabs. 
+They then enter the stock concentration, the desired concentration, and the desired volume of solution into the boxes. 
+<p>
+The volume of stock required is then calculated as:
+\[\frac{Vol_{desired}\times Conc_{desired}}{Conc_{stock}} = Vol_{stock}\]</p>
+
+</div>
   </article>
   <!-- Presenter Notes -->
 </slide>
@@ -72,14 +187,26 @@
     <ul>
       <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=1 title='Read-And-Delete'>
+        data-slide=1 title='NA'>
          1
       </a>
     </li>
     <li>
       <a href="#" target="_self" rel='tooltip' 
-        data-slide=2 title='Slide 2'>
+        data-slide=2 title='NA'>
          2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Mass Molarity Calculator'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='Solution Dilution Calculator'>
+         4
       </a>
     </li>
   </ul>
@@ -92,7 +219,21 @@
 </body>
   <!-- Load Javascripts for Widgets -->
   
-  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <!-- MathJax: Fall back to local if CDN offline but local image fonts are not supported (saves >100MB) -->
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        processEscapes: true
+      }
+    });
+  </script>
+  <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  <!-- <script src="https://c328740.ssl.cf1.rackcdn.com/mathjax/2.0-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+  </script> -->
+  <script>window.MathJax || document.write('<script type="text/x-mathjax-config">MathJax.Hub.Config({"HTML-CSS":{imageFont:null}});<\/script><script src="libraries/widgets/mathjax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"><\/script>')
+</script>
+<!-- LOAD HIGHLIGHTER JS FILES -->
   <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
   <script>hljs.initHighlightingOnLoad();</script>
   <!-- DONE LOADING HIGHLIGHTER JS FILES -->

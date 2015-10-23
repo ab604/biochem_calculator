@@ -54,6 +54,12 @@ scales.
 <br>
 So I have created a simple Shiny app to do these two calculations and convert the units, 
 making things quicker and easier than pen and paper.
+<br>
+<br>
+The app is at: <a href = "https://ab604.shinyapps.io/biochem_calculator", target="_blank">BioChem Calculator</a>
+<br>
+<br>
+The R code is at: <a href = "https://github.com/ab604/biochem_calculator", target="_blank">GitHub Repo</a>
 
 --- .class #id 
 

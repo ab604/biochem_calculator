@@ -43,7 +43,7 @@ em {
 
 ## A simple calculator for use in the Biochemistry Lab 
 <br>
-Two everyday problems I and my colleagues encounter in the labroratory are:
+Two everyday problems I and my colleagues encounter in the laboratory are:
 
 1. How much of ***X*** do I need to weigh out to make a solution of concentration ***Y*** ?
 2. How much of solution ***A*** do I need to dilute to make a soluton of concentration ***B*** ?
@@ -59,14 +59,13 @@ making things quicker and easier than pen and paper.
 The app is at: <a href = "https://ab604.shinyapps.io/biochem_calculator", target="_blank">BioChem Calculator</a>
 <br>
 <br>
-The R code is at: <a href = "https://github.com/ab604/biochem_calculator", target="_blank">GitHub Repo</a>
+The R code for the app is at: <a href = "https://github.com/ab604/biochem_calculator", target="_blank">BioChem Calculator GitHub Repo</a>
 
 --- .class #id 
 
 **For example** if I have a stock solution of <a href = "https://en.wikipedia.org/wiki/Ethylenediaminetetraacetic_acid", target="_blank">EDTA</a> at M1 = 0.5 Molar.
 <br>
-To make a volume V2 = 100 mL of EDTA at a concentration of M2 = 10 mM from the stock solution I need the concentration and volumes in the same units
-to do the calculation, like so:
+To make a volume V2 = 100 mL of EDTA at a concentration of M2 = 10 mM from the stock solution M1, I need the concentration and volumes in the same units to do the calculation, like so:
 
 ```r
 # Input conc. and vols in Molar and Litres

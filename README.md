@@ -1,4 +1,4 @@
-#Course project for Coursera Developing Data Projects, October 2015
+###Course project for Coursera Developing Data Projects, October 2015
 
 This repo contains the code for the slidify slides and the R code for the ui and server for the Shiny app
 

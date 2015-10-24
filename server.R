@@ -57,7 +57,7 @@ shinyServer(function(input, output) {
         
         # Calculate required mass and output to UI
         output$mass <- renderText({paste("You need to weigh out",
-                                         vol()*conc()*fw(),
+                                         round(vol()*conc()*fw(),5),
                                          "grams")})
         output$ex1 <- renderUI({
                 withMathJax(helpText('Dynamic output 1:  $$\\alpha^2$$'))
@@ -124,13 +124,13 @@ shinyServer(function(input, output) {
         # Calculate required volume of stock V1 in terms of V2
         v1 <- reactive({
                 if(input$V2.unit == 1){
-                        v1 <- paste((m2()*input$V2)/m1(), "L")
+                        v1 <- paste(round((m2()*input$V2)/m1(),5), "L")
                 }
                 else if(input$V2.unit == 2){
-                        v1 <- paste((m2()*input$V2)/m1(), "mL")
+                        v1 <- paste(round((m2()*input$V2)/m1(),5), "mL")
                 }
                 else if(input$V2.unit == 3){
-                        v1 <- paste((m2()*input$V2)/m1(), "uL")
+                        v1 <- paste(round((m2()*input$V2)/m1(),5), "uL")
                 }
         })
         

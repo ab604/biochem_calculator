@@ -25,7 +25,7 @@ shinyUI(
                                                 selected = 2
                                         ),
                                         # Input volume
-                                        numericInput("fv","Desired final volume", 100),
+                                        numericInput("fv","Desired final volume",min = 0, 100),
                                         # select input concentration units
                                         selectInput(
                                                 "conc.unit",
@@ -41,10 +41,10 @@ shinyUI(
                                                 selected = 2
                                         ),
                                         # Input desired concentration
-                                        numericInput("dc","Desired concentration", 10),
+                                        numericInput("dc","Desired concentration",min = 0, 10),
                                         # Input Formula weight
                                         numericInput("fw","Formula weight (g/mol)"
-                                                     , 292.24)
+                                                     , min = 0, 292.24)
                                 ),
                                 # Show reactive ouptut of mass requrired
                                 mainPanel(
@@ -95,7 +95,7 @@ shinyUI(
                                                         selected = 1
                                                 ),
                                                 # Input stock solution concentration
-                                                numericInput("M1","Stock solution concentration", 0.5),
+                                                numericInput("M1","Stock solution concentration",min = 0, 0.5),
                                                 # Select desired solution
                                                 # concentration units
                                                 selectInput(
@@ -112,7 +112,7 @@ shinyUI(
                                                         selected = 2
                                                 ),
                                                 # Select stock solution concentration units
-                                                numericInput("M2","Desired concentration", 10),
+                                                numericInput("M2","Desired concentration",min = 0, 10),
                                                 selectInput(
                                                         "V2.unit",
                                                         label = "Desired final volume units",
@@ -124,7 +124,7 @@ shinyUI(
                                                         selected = 2
                                                 ),
                                                 # Input desired volume of solution
-                                                numericInput("V2","Desired final volume", 100)
+                                                numericInput("V2","Desired final volume",min = 0, 100)
                                         ),
                                         # Output the volume of stock required
                                         mainPanel(
